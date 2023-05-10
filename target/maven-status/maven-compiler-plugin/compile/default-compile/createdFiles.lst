@@ -1,0 +1,8 @@
+com/iiitb/dbservice/service/UserService.class
+com/iiitb/dbservice/model/Question.class
+com/iiitb/dbservice/repository/UserRepository.class
+com/iiitb/dbservice/model/User.class
+com/iiitb/dbservice/controller/QuestionController.class
+com/iiitb/dbservice/service/QuestionService.class
+com/iiitb/dbservice/repository/QuestionRepository.class
+com/iiitb/dbservice/DBServiceApplication.class
