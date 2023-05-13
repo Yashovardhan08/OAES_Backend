@@ -6,6 +6,9 @@ import com.iiitb.dbservice.repository.QuestionRepository;
 import com.iiitb.dbservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +18,7 @@ import java.util.List;
 @Service
 @Component
 @RequiredArgsConstructor
-public class UserService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private final UserRepository userRepository;
@@ -76,6 +79,7 @@ public class UserService {
 
     public boolean login(User user) {
         List<User> users = userRepository.findAll();
+        System.out.println("user name provided :"+user.getUsername()+" password: "+user.getPassword());
         for (User u : users) {
             if (u.getUsername() == null) {
                 userRepository.delete(u);
@@ -107,4 +111,20 @@ public class UserService {
         return -1;
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        List<User> ul = userRepository.findAll();
+        System.out.println("IN loading user from username");
+        for(User u: ul){
+            if (u.getUsername() == null) {
+                userRepository.delete(u);
+                continue;
+            }
+            if(u.getUsername().equals(username)){
+                System.out.println("username given :"+username+ " username in repo :"+ u.getUsername());
+                return new org.springframework.security.core.userdetails.User(username,u.getPassword(),new ArrayList<>());
+            }
+        }
+        return null;
+    }
 }

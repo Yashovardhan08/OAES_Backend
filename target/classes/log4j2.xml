@@ -3,24 +3,24 @@
     <Appenders>
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
-            <ThresholdFilter level="warn"  onMatch="DENY" onMismatch="NEUTRAL"/>
-            <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
-            <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL"/>
+<!--            <ThresholdFilter level="warn"  onMatch="DENY" onMismatch="NEUTRAL"/>-->
+<!--            <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>-->
+<!--            <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL"/>-->
 
-            <!-- Then accept info, warn, error, fatal and deny debug/trace -->
-            <ThresholdFilter level="info"  onMatch="ACCEPT" onMismatch="DENY"/>
+<!--            &lt;!&ndash; Then accept info, warn, error, fatal and deny debug/trace &ndash;&gt;-->
+<!--            <ThresholdFilter level="info"  onMatch="ACCEPT" onMismatch="DENY"/>-->
         </Console>
 
         <File name="FileAppender" filename="./logData/db-application.log" append="true">
             <JSONLayout compact="true" eventEol="true">
                 <KeyValuePair key="@timestamp" value="${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}" />
             </JSONLayout>
-            <ThresholdFilter level="warn"  onMatch="DENY" onMismatch="NEUTRAL"/>
-            <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
-            <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL"/>
+<!--            <ThresholdFilter level="warn"  onMatch="DENY" onMismatch="NEUTRAL"/>-->
+<!--            <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>-->
+<!--            <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL"/>-->
 
             <!-- Then accept info, warn, error, fatal and deny debug/trace -->
-            <ThresholdFilter level="info"  onMatch="ACCEPT" onMismatch="DENY"/>
+<!--            <ThresholdFilter level="info"  onMatch="ACCEPT" onMismatch="DENY"/>-->
         </File>
 
 
